@@ -49,7 +49,7 @@ Resources:
               - Sid: S3PutObjectPolicy
                 Effect: Allow
                 Action:
-                  - 's3:PutObject'
+                  - '*'
                 Resource:
                   - '*'
               - Sid: S3BucketIdentity
