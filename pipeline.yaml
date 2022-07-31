@@ -268,7 +268,7 @@ Resources:
               Configuration:
                 ProjectName: !Ref CodeBuilProject
               OutputArtifacts:
-                - Name: BuildOutput
+                - Name: BuildOut
               InputArtifacts:
                 - Name: SourceCode
         - Name: Dev   
@@ -282,7 +282,7 @@ Resources:
               Configuration:
                 ProjectName: !Ref CodeBuilProjectDeployDev
               InputArtifacts:
-                - Name: BuildOutput
+                - Name: BuildOut
         - Name: Qa   
           Actions:
             - Name: Deploy
@@ -295,7 +295,7 @@ Resources:
               Configuration:
                 ProjectName: !Ref CodeBuilProjectDeployQa
               InputArtifacts:
-                - Name: BuildOutput
+                - Name: BuildOut
 
             - Name: Approval
               RunOrder: 2
@@ -318,4 +318,4 @@ Resources:
               Configuration:
                 ProjectName: !Ref CodeBuilProjectDeployProd
               InputArtifacts:
-                - Name: BuildOutput
+                - Name: BuildOut
