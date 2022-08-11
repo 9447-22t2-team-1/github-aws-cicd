@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: AWS CI/CD pipeline for Github Applications
+Description: AWS CI/CD pipeline for Github 
 Parameters:
   GitHubOwner:
     Type: String
