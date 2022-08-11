@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Description: CI/CD pipeline for GitHub projects
+Description: AWS CI/CD pipeline for Github
 Parameters:
   GitHubOwner:
     Type: String
@@ -66,7 +66,7 @@ Resources:
       ServerType: GITHUB
       Token: >-
         {{resolve:secretsmanager:GITHUB_ACCESS:SecretString:GITHUB_ACCESS_TOKEN}}
-  CodeBuilProject:
+  CodeBuildProject:
     Type: 'AWS::CodeBuild::Project'
     Properties:
       Name: !Ref 'AWS::StackName'
@@ -96,7 +96,7 @@ Resources:
         ComputeType: BUILD_GENERAL1_SMALL
         Image: !Ref CodeBuildEnvironmentImage
 
-  CodeBuilProjectDeployDev:  
+  CodeBuildProjectDeployDev:  
     Type: 'AWS::CodeBuild::Project'
     Properties:
       Name: !Sub '${AWS::StackName}-deploy-dev'
@@ -116,7 +116,7 @@ Resources:
           - Name: ENV_NAME
             Value: dev
   
-  CodeBuilProjectDeployQa:  
+  CodeBuildProjectDeployQa:  
     Type: 'AWS::CodeBuild::Project'
     Properties:
       Name: !Sub '${AWS::StackName}-deploy-qa'
@@ -136,7 +136,7 @@ Resources:
           - Name: ENV_NAME
             Value: qa  
 
-  CodeBuilProjectDeployProd:  
+  CodeBuildProjectDeployProd:  
     Type: 'AWS::CodeBuild::Project'
     Properties:
       Name: !Sub '${AWS::StackName}-deploy-prod'
@@ -266,7 +266,7 @@ Resources:
                 Provider: CodeBuild
                 Version: '1'
               Configuration:
-                ProjectName: !Ref CodeBuilProject
+                ProjectName: !Ref CodeBuildProject
               OutputArtifacts:
                 - Name: BuildOut
               InputArtifacts:
@@ -280,7 +280,7 @@ Resources:
                 Provider: CodeBuild
                 Version: '1'
               Configuration:
-                ProjectName: !Ref CodeBuilProjectDeployDev
+                ProjectName: !Ref CodeBuildProjectDeployDev
               InputArtifacts:
                 - Name: SourceCode
         - Name: Qa   
@@ -293,7 +293,7 @@ Resources:
                 Provider: CodeBuild
                 Version: '1'
               Configuration:
-                ProjectName: !Ref CodeBuilProjectDeployQa
+                ProjectName: !Ref CodeBuildProjectDeployQa
               InputArtifacts:
                 - Name: SourceCode
 
@@ -316,7 +316,7 @@ Resources:
                 Provider: CodeBuild
                 Version: '1'
               Configuration:
-                ProjectName: !Ref CodeBuilProjectDeployProd
+                ProjectName: !Ref CodeBuildProjectDeployProd
               InputArtifacts:
                 - Name: SourceCode
 
