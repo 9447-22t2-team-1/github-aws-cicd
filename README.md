@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # CI/CD Pipeline
 CI/CD Pipeline that builds and deploys code to a dev, QA testing environment and then once a manual review is approved the changes are pushed to production. Triggers are setup to ensure the code can successfully build whenever a pull request is created, updated, reopend or code is pushed to a branch. Branch protection rules are set to ensure code passes staus check before being merged to main/master branch. 
 
@@ -23,5 +24,10 @@ deployspec.yaml -> add commands to deploy your application i.e ec2, lamda, s3 et
 8. create a PR to check which should trigger codebuild status check
 9. merge code to master branch which automatically triggers codepipeline 
 10. to view the pipeline on the aws console got to aws code pipline
+=======
+
+CI/CD Pipeline that builds and deploys code to a dev, QA testing environment and then once a manual review is approved the changes are pushed to production. Triggers are setup to ensure the code can successfully build whenever a pull request is created, updated, reopend or code is pushed to a branch. Branch protection rules are set to ensure code passes staus check before being merged to main/master branch. 
+
+>>>>>>> f06e5565ded6da7df712023feec7f5c9f50fe31d
 
 
